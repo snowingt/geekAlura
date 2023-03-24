@@ -35,7 +35,7 @@ const CardsCategory = ({name,image,id}) => {
       <div>
 
       </div>
-        <Span>ver producto</Span>
+        <Span>ver categorias</Span>
        
         
 

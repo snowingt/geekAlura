@@ -1,5 +1,6 @@
 import React from 'react'
 import  StyledComponent  from 'styled-components'
+import Swal from "sweetalert2";
 
 //styled-components
 const Input = StyledComponent.input`
@@ -44,23 +45,48 @@ const Form = StyledComponent.form`
 `
 
 
-const Loging = () => {
+const Loging = ({setShowLogin}) => {
     const [data, setData] = React.useState({ username: '', password: '' })
-    const [error, setError] = React.useState({ username: '', password: '' })
-    const [isSubmit, setIsSubmit] = React.useState(false)
+    
+  
 
-   
-
-
+   const{username, password} = data
+    const user={
+        username: 'admin',
+        password: 'admin'
+    }
+//form validation
 
 const handleSubmmit = (e) => {
     e.preventDefault()
     console.log('submit')
+   if(username === user.username && password === user.password){
+       console.log('correcto')
+       Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "bienvendio",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setShowLogin(true)
+    }else{
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "  UserName o Password incorrect!",
+          });
+    }
+
    
 
 }
 const handleChange = (e) => {
-    console.log(e.target.value)
+    setData({
+        ...data,
+        [e.target.name]: e.target.value
+    })
+    
 
 }
 
@@ -74,10 +100,10 @@ const handleChange = (e) => {
    
     <div className='w-full loging-container flex flex-col gap-5 place-content-center place-items-center pt-20  '>
         <h1 className='text-4xl pb-5'>Iniciar Sesion</h1>
-        <Form className=''>
-            <Input onChange={handleChange} type='text' placeholder='Username' className='w-full mb-10 pb-5'/>
-            <Input onChange={handleChange} type='password' placeholder='Password' className='w-full mb-10 pb-5'/>
-            <Button type='submit' value='Iniciar Sesion' className='w-full mb-10 pb-5' onClick={handleSubmmit} />
+        <Form onSubmit={handleSubmmit} className=''>
+            <Input onChange={handleChange} name="username" value={username} type='text' placeholder='Username' className='w-full mb-10 pb-5'/>
+            <Input onChange={handleChange} type='password' name='password' value={password} placeholder='Password' className='w-full mb-10 pb-5'/>
+            <Button type='submit' value='Iniciar Sesion' className='w-full mb-10 pb-5'  />
         </Form>
     </div>
     </div>

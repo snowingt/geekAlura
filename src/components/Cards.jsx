@@ -63,6 +63,7 @@ const Cards = ({
         <div>
           <P>{price}$</P>
         </div>
+       
         <Span onClick={handleProduct}>ver producto</Span>
       </div>
     </div>

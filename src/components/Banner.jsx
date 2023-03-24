@@ -30,9 +30,9 @@ const Banner = () => {
  
   return (
     <div>
-        <div className="banner flex place-items-end pb-10 ">
-        <div className="banner__content  ">
-          <H1 className="banner__title">Alura Geek</H1>
+        <div className="banner flex place-items-end pb-10  ">
+        <div className="banner__content gap-5 flex flex-col ">
+          <H1 className="banner__title  ">Promocional marzo</H1>
           <P className="banner__text">Lorem ipsum dolor sit amet consectetur  </P>
           <Button className="banner__button">Comprar</Button>
           </div>

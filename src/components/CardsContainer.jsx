@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import Cards from "./Cards";
 import CardsCategory from "./CardsCategory";
 
@@ -23,18 +24,9 @@ const LinkContainer = styled.div`
   padding-left: 10 px;
 `;
 
-const Link = styled.a`
-  color: #2a7ae4;
-  font-weight: semi-bold;
-  font-size: 14px;
-  margin-left: 1rem;
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline;
-  }
-`;
 
-const CardsContainer = ({ categories, name, setProduct, show, setShow }) => {
+
+const CardsContainer = ({ categories, name, setProduct, show, setShow,cantidad}) => {
   const [cards, setCards] = useState([]);
 
   //get api
@@ -66,8 +58,9 @@ const CardsContainer = ({ categories, name, setProduct, show, setShow }) => {
     <div className="w-full pb-4 flex flex-col pt-8 pr-10  place-items-center">
       <Heeader>
         <Title>{name}</Title>
-        <LinkContainer>
-          <Link>Ver todo</Link>
+        <LinkContainer 
+        >
+          <Link to="/allproducts" className="link" >Ver todo</Link>
         </LinkContainer>
       </Heeader>
 
@@ -75,7 +68,7 @@ const CardsContainer = ({ categories, name, setProduct, show, setShow }) => {
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-6  gap-3 w-5/6 ">
           {categories === "products"
             ? cards
-                .slice(0, 6)
+                .slice(0,cantidad)
                 .map(({ title, id, category, price, description }) => (
                   <Cards
                     key={id}

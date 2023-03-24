@@ -30,7 +30,7 @@ const Product = ({ product, setShow }) => {
   };
 
   return (
-    <div className="container max-w-6xl mx-auto">
+    <div className="container max-w-6xl mx-auto pb-10">
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-20">
       <div className="text-center">
         <Img src={image} alt="" />

@@ -3,14 +3,8 @@ import Banner from "../components/Banner";
 import CardsContainer from "../components/CardsContainer";
 import Product from "../components/Product";
 
-const Home = ({ show, setShow }) => {
-  const [product, setProduct] = React.useState({
-    title: "",
-    price: "",
-    category: "",
-    id: "",
-    description: "",
-  });
+const Home = ({ show, setShow,product, setProduct }) => {
+ 
   return (
     <div>
       <div className="flex justify-center flex-col  place-items-center">
@@ -28,6 +22,7 @@ const Home = ({ show, setShow }) => {
              name={"category"}
               />
             <CardsContainer
+            cantidad={'6'}
               setShow={setShow}
               show={show}
               setProduct={setProduct}
